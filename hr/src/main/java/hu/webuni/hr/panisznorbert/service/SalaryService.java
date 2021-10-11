@@ -1,13 +1,19 @@
 package hu.webuni.hr.panisznorbert.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import hu.webuni.hr.panisznorbert.model.Employee;
 
+@Service
 public class SalaryService {
 
-	@Autowired
-	EmployeeService employeeService;
+	
+	private EmployeeService employeeService;
+	
+	public SalaryService(EmployeeService employeeService) {
+		this.employeeService = employeeService;
+	}
 	
 	public int getNewSalary(Employee employee) {
 		

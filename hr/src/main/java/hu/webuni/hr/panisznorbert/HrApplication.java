@@ -6,9 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
 import hu.webuni.hr.panisznorbert.model.Employee;
+import hu.webuni.hr.panisznorbert.service.DefaultEmployeeService;
+import hu.webuni.hr.panisznorbert.service.EmployeeService;
 import hu.webuni.hr.panisznorbert.service.SalaryService;
+import hu.webuni.hr.panisznorbert.service.SmartEmployeeService;
 
 @SpringBootApplication
 public class HrApplication implements CommandLineRunner {
@@ -32,5 +36,10 @@ public class HrApplication implements CommandLineRunner {
 		System.out.println(salaryService.getNewSalary(dolgozo1));
 		System.out.println(salaryService.getNewSalary(dolgozo2));
 		System.out.println(salaryService.getNewSalary(dolgozo3));
+	}
+	
+	@Bean
+	public EmployeeService employeeService() {
+		return new SmartEmployeeService();
 	}
 }

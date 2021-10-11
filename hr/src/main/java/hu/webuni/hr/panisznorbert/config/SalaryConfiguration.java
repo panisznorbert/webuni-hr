@@ -11,6 +11,6 @@ import hu.webuni.hr.panisznorbert.service.EmployeeService;
 @Profile("!smart")
 public class SalaryConfiguration {
 
-	@Bean
-	public EmployeeService employeeService() {return new DefaultEmployeeService();}
+	//@Bean
+	//public EmployeeService employeeService() {return new DefaultEmployeeService();}
 }
