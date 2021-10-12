@@ -11,7 +11,7 @@ import hu.webuni.hr.panisznorbert.service.SmartEmployeeService;
 @Profile("smart")
 public class SmartSlarayConfiguration {
 	
-	//@Bean
-	//public EmployeeService employeeService() {return new SmartEmployeeService();}
+	@Bean
+	public EmployeeService employeeService() {return new SmartEmployeeService();}
 
 }

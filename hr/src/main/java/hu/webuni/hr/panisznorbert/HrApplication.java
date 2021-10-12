@@ -27,11 +27,11 @@ public class HrApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		
-		Employee dolgozo1 = new Employee(12345678910L, "Norbi", "fejleszto", 10000, LocalDateTime.now().minusYears(12));
+		Employee dolgozo1 = new Employee(12345678910L, "Norbi", "fejleszto", 10000, LocalDateTime.now().minusYears(10));
 		
-		Employee dolgozo2 = new Employee(12345678910L, "Norbi", "fejleszto", 10000, LocalDateTime.now().minusYears(9));
+		Employee dolgozo2 = new Employee(12345678910L, "Norbi", "fejleszto", 10000, LocalDateTime.now().minusYears(5));
 		
-		Employee dolgozo3 = new Employee(12345678910L, "Norbi", "fejleszto", 10000, LocalDateTime.now().minusYears(2));
+		Employee dolgozo3 = new Employee(12345678910L, "Norbi", "fejleszto", 10000, LocalDateTime.now().minusYears(3));
 		
 		salaryService.setNewSalary(dolgozo1);
 		System.out.println(dolgozo1.toString());
@@ -39,10 +39,8 @@ public class HrApplication implements CommandLineRunner {
 		System.out.println(dolgozo2.toString());
 		salaryService.setNewSalary(dolgozo3);
 		System.out.println(dolgozo3.toString());
+
 	}
 	
-	@Bean
-	public EmployeeService employeeService() {
-		return new SmartEmployeeService();
-	}
+
 }
