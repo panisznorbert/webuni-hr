@@ -33,9 +33,12 @@ public class HrApplication implements CommandLineRunner {
 		
 		Employee dolgozo3 = new Employee(12345678910L, "Norbi", "fejleszto", 10000, LocalDateTime.now().minusYears(2));
 		
-		System.out.println(salaryService.getNewSalary(dolgozo1));
-		System.out.println(salaryService.getNewSalary(dolgozo2));
-		System.out.println(salaryService.getNewSalary(dolgozo3));
+		salaryService.setNewSalary(dolgozo1);
+		System.out.println(dolgozo1.toString());
+		salaryService.setNewSalary(dolgozo2);
+		System.out.println(dolgozo2.toString());
+		salaryService.setNewSalary(dolgozo3);
+		System.out.println(dolgozo3.toString());
 	}
 	
 	@Bean

@@ -63,6 +63,12 @@ public class Employee {
 		this.entry = entry;
 	}
 
+	@Override
+	public String toString() {
+		return "Employee [id=" + id + ", name=" + name + ", post=" + post + ", salary=" + salary + ", entry=" + entry
+				+ "]";
+	}
+
 	
 	
 	
