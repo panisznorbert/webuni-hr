@@ -3,13 +3,12 @@ hr:
     default:
       percent: '5'
     smart:
-      max_year: '10'
-      minimum_month: '6'
-      medium_year: '5'
-      minimum_year: '2'
-      max_percent: '10'
-      medium_percent: '5'
-      minimum_percent: '2'
+      limits:
+        1: 1
+        2.5: 2
+        5: 5
+        10: 10
+        7.5: 8
 spring:
   profiles:
     active: "smart"

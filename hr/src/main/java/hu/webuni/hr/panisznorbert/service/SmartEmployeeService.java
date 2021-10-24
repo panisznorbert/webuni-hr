@@ -1,8 +1,12 @@
 package hu.webuni.hr.panisznorbert.service;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
+import java.util.Map;
+import java.util.TreeMap;
 
 import hu.webuni.hr.panisznorbert.config.HrConfigProperties;
+import hu.webuni.hr.panisznorbert.config.HrConfigProperties.Smart;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,26 +15,23 @@ import hu.webuni.hr.panisznorbert.model.Employee;
 @Service
 public class SmartEmployeeService implements EmployeeService{
 
+
+
 	@Autowired
 	HrConfigProperties config;
 
 	@Override
 	public int getPayRaisePercent(Employee employee) {
-				
-		if (LocalDateTime.now().minusYears(config.getSalary().getSmart().getMax_year()).compareTo(employee.getEntry()) >= 0) {
-			return config.getSalary().getSmart().getMax_percent();
-		}
-		
-		if (LocalDateTime.now().minusYears(config.getSalary().getSmart().getMedium_year()).compareTo(employee.getEntry()) >= 0) {
-			return config.getSalary().getSmart().getMedium_percent();
-		}
 
-		
-		if (LocalDateTime.now().minusYears(config.getSalary().getSmart().getMinimum_year()).minusMonths(config.getSalary().getSmart().getMinimum_month()).compareTo(employee.getEntry()) >= 0) {
-			return config.getSalary().getSmart().getMinimum_percent();
-		}
-		
-		return 0;
+		double yearsWorked = ChronoUnit.DAYS.between(employee.getEntry(), LocalDateTime.now()) / 365.0;
+
+		Smart smartConfig = config.getSalary().getSmart();
+
+		TreeMap<Double, Integer> limits = smartConfig.getLimits();
+
+		Map.Entry<Double, Integer> floorEntry = limits.floorEntry(yearsWorked);
+
+		return floorEntry == null ? 0 : floorEntry.getValue();
 	}
 
 }

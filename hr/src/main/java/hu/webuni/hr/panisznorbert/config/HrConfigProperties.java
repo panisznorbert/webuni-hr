@@ -1,12 +1,9 @@
 package hu.webuni.hr.panisznorbert.config;
 
-import hu.webuni.hr.panisznorbert.service.DefaultEmployeeService;
-import hu.webuni.hr.panisznorbert.service.EmployeeService;
-import hu.webuni.hr.panisznorbert.service.SmartEmployeeService;
+
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
+import java.util.TreeMap;
 
 @ConfigurationProperties(prefix = "hr")
 @Component
@@ -61,69 +58,70 @@ public class HrConfigProperties {
 
 	public static class Smart{
 
-		private int max_year;
-		private int medium_year;
-		private int minimum_year;
-		private int minimum_month;
+		private Double limit1;
+		private Double limit2;
+		private Double limit3;
+		private Integer percent1;
+		private Integer percent2;
+		private Integer percent3;
 
-		private int max_percent;
-		private int medium_percent;
-		private int minimum_percent;
 
-		public int getMax_year() {
-			return max_year;
+		private TreeMap<Double, Integer> limits;
+
+		public Double getLimit1() {
+			return limit1;
 		}
 
-		public void setMax_year(int max_year) {
-			this.max_year = max_year;
+		public void setLimit1(Double limit1) {
+			this.limit1 = limit1;
 		}
 
-		public int getMedium_year() {
-			return medium_year;
+		public Double getLimit2() {
+			return limit2;
 		}
 
-		public void setMedium_year(int medium_year) {
-			this.medium_year = medium_year;
+		public void setLimit2(Double limit2) {
+			this.limit2 = limit2;
 		}
 
-		public int getMinimum_year() {
-			return minimum_year;
+		public Double getLimit3() {
+			return limit3;
 		}
 
-		public void setMinimum_year(int minimum_year) {
-			this.minimum_year = minimum_year;
+		public void setLimit3(Double limit3) {
+			this.limit3 = limit3;
 		}
 
-		public int getMinimum_month() {
-			return minimum_month;
+		public Integer getPercent1() {
+			return percent1;
 		}
 
-		public void setMinimum_month(int minimum_month) {
-			this.minimum_month = minimum_month;
+		public void setPercent1(Integer percent1) {
+			this.percent1 = percent1;
 		}
 
-		public int getMax_percent() {
-			return max_percent;
+		public Integer getPercent2() {
+			return percent2;
 		}
 
-		public void setMax_percent(int max_percent) {
-			this.max_percent = max_percent;
+		public void setPercent2(Integer percent2) {
+			this.percent2 = percent2;
 		}
 
-		public int getMedium_percent() {
-			return medium_percent;
+		public Integer getPercent3() {
+			return percent3;
 		}
 
-		public void setMedium_percent(int medium_percent) {
-			this.medium_percent = medium_percent;
+		public void setPercent3(Integer percent3) {
+			this.percent3 = percent3;
 		}
 
-		public int getMinimum_percent() {
-			return minimum_percent;
+		public TreeMap<Double, Integer> getLimits() {
+			return limits;
 		}
 
-		public void setMinimum_percent(int minimum_percent) {
-			this.minimum_percent = minimum_percent;
+		public void setLimits(TreeMap<Double, Integer> limits) {
+			this.limits = limits;
 		}
 	}
 }
