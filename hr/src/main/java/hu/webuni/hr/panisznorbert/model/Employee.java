@@ -54,6 +54,8 @@ public class Employee {
 		this.entry = entry;
 	}
 
+	public Employee(){}
+
 	public Employee(Long id, String name, String post, int salary, LocalDateTime entry) {
 		super();
 		this.id = id;
