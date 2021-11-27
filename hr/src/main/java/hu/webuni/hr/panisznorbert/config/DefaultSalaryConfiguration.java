@@ -1,16 +1,17 @@
 package hu.webuni.hr.panisznorbert.config;
 
+import hu.webuni.hr.panisznorbert.service.DefaultEmployeeService;
+import hu.webuni.hr.panisznorbert.service.EmployeeService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
-import hu.webuni.hr.panisznorbert.service.DefaultEmployeeService;
-import hu.webuni.hr.panisznorbert.service.EmployeeService;
-
 @Configuration
 @Profile("!smart")
-public class SalaryConfiguration {
+public class DefaultSalaryConfiguration {
 
 	@Bean
-	public EmployeeService employeeService() {return new DefaultEmployeeService();}
+	public EmployeeService employeeService() {
+		return new DefaultEmployeeService();
+	}
 }

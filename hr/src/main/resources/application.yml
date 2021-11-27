@@ -11,7 +11,7 @@ hr:
         7.5: 8
 spring:
   profiles:
-    active: "smart"
+    active: -smart
 
   thymeleaf:
     cache: false
@@ -19,3 +19,13 @@ spring:
   mvc:
     format:
       date-time: yyyy-MM-dd HH:mm:ss
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/webuni
+    username: postgres
+    password: postgres
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create

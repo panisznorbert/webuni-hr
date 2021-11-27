@@ -1,0 +1,11 @@
+hr:
+  salary:
+    default:
+      percent: '5'
+    smart:
+      limits:
+        1: 1
+        2.5: 2
+        5: 5
+        10: 10
+        7.5: 8

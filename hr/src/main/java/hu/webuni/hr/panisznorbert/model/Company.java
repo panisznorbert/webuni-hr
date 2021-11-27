@@ -1,27 +1,29 @@
-package hu.webuni.hr.panisznorbert.dto;
+package hu.webuni.hr.panisznorbert.model;
 
-import com.fasterxml.jackson.annotation.JsonView;
-
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class CompanyDto {
-	
-	@JsonView(View.BaseData.class)
-	private Long id;
-	@JsonView(View.BaseData.class)
-	private int registrationNumber;
-	@JsonView(View.BaseData.class)
-	private String name;
-	@JsonView(View.BaseData.class)
-	private String address;
-	
-	List<EmployeeDto> employees = new ArrayList<>();
-	
-	public CompanyDto() {}
+@Entity
+public class Company {
 
-	public CompanyDto(Long id, int registrationNumber, String name, String adress, List<EmployeeDto> employees) {
+	@Id
+	@GeneratedValue
+	private Long id;
+	private int registrationNumber;
+	private String name;
+	private String address;
+
+	@OneToMany(mappedBy = "company")
+	private List<Employee> employees;
+
+	public Company() {}
+
+	public Company(Long id, int registrationNumber, String name, String adress, List<Employee> employees) {
 		this.id = id;
 		this.registrationNumber = registrationNumber;
 		this.name = name;
@@ -61,11 +63,19 @@ public class CompanyDto {
 		this.address = address;
 	}
 
-	public List<EmployeeDto> getEmployees() {
+	public List<Employee> getEmployees() {
 		return employees;
 	}
 
-	public void setEmployees(List<EmployeeDto> employees) {
+	public void setEmployees(List<Employee> employees) {
 		this.employees = employees;
+	}
+
+	public void addEmployee(Employee employee) {
+		if(this.employees == null)
+			this.employees = new ArrayList<>();
+
+		this.employees.add(employee);
+		employee.setCompany(this);
 	}
 }

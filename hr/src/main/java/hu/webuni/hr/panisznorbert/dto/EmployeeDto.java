@@ -1,32 +1,37 @@
 package hu.webuni.hr.panisznorbert.dto;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Positive;
 import java.time.LocalDateTime;
 
 public class EmployeeDto {
 
-    private Long id;
+    private long id;
+    @NotEmpty
     private String name;
-    private String post;
+    @NotEmpty
+    private String title;
+    @Positive
     private int salary;
-    private LocalDateTime entry;
+    @Past
+    private LocalDateTime entryDate;
 
-    public EmployeeDto() {
+    public EmployeeDto() {}
 
-    }
-
-    public EmployeeDto(Long id, String name, String post, int salary, LocalDateTime entry) {
+    public EmployeeDto(Long id, String name, String title, int salary, LocalDateTime entryDate) {
         this.id = id;
         this.name = name;
-        this.post = post;
+        this.title = title;
         this.salary = salary;
-        this.entry = entry;
+        this.entryDate = entryDate;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -38,12 +43,12 @@ public class EmployeeDto {
         this.name = name;
     }
 
-    public String getPost() {
-        return post;
+    public String getTitle() {
+        return title;
     }
 
-    public void setPost(String post) {
-        this.post = post;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public int getSalary() {
@@ -54,17 +59,17 @@ public class EmployeeDto {
         this.salary = salary;
     }
 
-    public LocalDateTime getEntry() {
-        return entry;
+    public LocalDateTime getEntryDate() {
+        return entryDate;
     }
 
-    public void setEntry(LocalDateTime entry) {
-        this.entry = entry;
+    public void setEntryDate(LocalDateTime entryDate) {
+        this.entryDate = entryDate;
     }
 
     @Override
     public String toString() {
-        return "Employee [id=" + id + ", name=" + name + ", post=" + post + ", salary=" + salary + ", entry=" + entry
+        return "Employee [id=" + id + ", name=" + name + ", title=" + title + ", salary=" + salary + ", entryDate=" + entryDate
                 + "]";
     }
 }

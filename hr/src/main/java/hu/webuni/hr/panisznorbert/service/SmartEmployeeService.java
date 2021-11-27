@@ -13,9 +13,7 @@ import org.springframework.stereotype.Service;
 import hu.webuni.hr.panisznorbert.model.Employee;
 
 @Service
-public class SmartEmployeeService implements EmployeeService{
-
-
+public class SmartEmployeeService extends AbstractEmployeeService {
 
 	@Autowired
 	HrConfigProperties config;
@@ -30,8 +28,9 @@ public class SmartEmployeeService implements EmployeeService{
 		TreeMap<Double, Integer> limits = smartConfig.getLimits();
 
 		Map.Entry<Double, Integer> floorEntry = limits.floorEntry(yearsWorked);
-
 		return floorEntry == null ? 0 : floorEntry.getValue();
+
 	}
 
 }
+
