@@ -30,5 +30,5 @@ public interface EmployeeService {
 
 	List<Employee> findBySalaryGreaterThan(Integer minSalary);
 
-	
+	void deleteAll();
 }

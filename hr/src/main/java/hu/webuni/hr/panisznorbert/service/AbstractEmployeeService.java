@@ -1,6 +1,5 @@
 package hu.webuni.hr.panisznorbert.service;
 
-import hu.webuni.hr.panisznorbert.dto.EmployeeDto;
 import hu.webuni.hr.panisznorbert.model.Employee;
 import hu.webuni.hr.panisznorbert.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,6 +58,11 @@ public abstract class AbstractEmployeeService implements EmployeeService {
     @Override
     public List<Employee> findBySalaryGreaterThan(Integer minSalary){
         return employeeRepository.findBySalaryGreaterThan(minSalary);
+    }
+
+    @Override
+    public void deleteAll(){
+        employeeRepository.deleteAll();
     }
 
 }

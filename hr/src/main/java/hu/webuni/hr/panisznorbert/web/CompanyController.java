@@ -5,6 +5,7 @@ import hu.webuni.hr.panisznorbert.dto.EmployeeDto;
 import hu.webuni.hr.panisznorbert.mapper.CompanyMapper;
 import hu.webuni.hr.panisznorbert.mapper.EmployeeMapper;
 import hu.webuni.hr.panisznorbert.model.Company;
+import hu.webuni.hr.panisznorbert.model.EmployeeAvgSalaryByPost;
 import hu.webuni.hr.panisznorbert.service.CompanyService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -79,6 +80,21 @@ public class CompanyController {
 	@PutMapping("/{companyId}/employees")
 	public CompanyDto replaceEmployees(@PathVariable long companyId, @RequestBody List<EmployeeDto> newEmployees) {
 		return null;
+	}
+
+	@GetMapping("/minsalary/{minSalary}")
+	public List<CompanyDto> getCompanysWhenSalaryGreaterThan(@PathVariable Integer minSalary, @RequestParam(required = false) Boolean full){
+		return companyMapper.companysToDtos(companyService.findBySalaryGreaterThan(minSalary));
+	}
+
+	@GetMapping("/personlimit/{personLimit}")
+	public List<CompanyDto> getCompanysWhenPersonGreaterThan(@PathVariable Integer personLimit, @RequestParam(required = false) Boolean full){
+		return companyMapper.companysToDtos(companyService.countEmployeeGreaterThan(personLimit));
+	}
+
+	@GetMapping("/{id}/avgSalary")
+	public List<EmployeeAvgSalaryByPost> findAvgSalariesByPost(@PathVariable long id, @RequestParam(required = false) Boolean full){
+		return companyService.findAvgSalariesByPost(id);
 	}
 
 }

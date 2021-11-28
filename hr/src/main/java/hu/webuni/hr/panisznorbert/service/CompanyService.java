@@ -1,12 +1,15 @@
 package hu.webuni.hr.panisznorbert.service;
 
+import hu.webuni.hr.panisznorbert.dto.CompanyDto;
 import hu.webuni.hr.panisznorbert.model.Company;
 import hu.webuni.hr.panisznorbert.model.Employee;
+import hu.webuni.hr.panisznorbert.model.EmployeeAvgSalaryByPost;
 import hu.webuni.hr.panisznorbert.repository.CompanyRepository;
 import hu.webuni.hr.panisznorbert.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 import java.util.Optional;
@@ -77,6 +80,20 @@ public class CompanyService {
 
     public void delete(long id) {
         companyRepository.deleteById(id);
+    }
+
+    void deleteAll(){ companyRepository.deleteAll();}
+
+    public List<Company> findBySalaryGreaterThan(Integer minSalary){
+        return companyRepository.findBySalaryGreaterThan(minSalary);
+    }
+
+    public List<Company> countEmployeeGreaterThan(Integer personLimit){
+        return companyRepository.countEmployeeGreaterThan(personLimit);
+    }
+
+    public List<EmployeeAvgSalaryByPost> findAvgSalariesByPost(long id){
+        return companyRepository.findAvgSalariesByPost(id);
     }
 
 }

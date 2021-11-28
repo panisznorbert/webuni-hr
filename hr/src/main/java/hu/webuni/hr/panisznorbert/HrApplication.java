@@ -3,6 +3,7 @@ package hu.webuni.hr.panisznorbert;
 import java.time.LocalDateTime;
 
 import hu.webuni.hr.panisznorbert.config.HrConfigProperties;
+import hu.webuni.hr.panisznorbert.service.InitDbService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -20,6 +21,9 @@ public class HrApplication implements CommandLineRunner {
 
 	@Autowired
 	HrConfigProperties config;
+
+	@Autowired
+	InitDbService initDbService;
 	
 	public static void main(String[] args) {SpringApplication.run(HrApplication.class, args);}
 
@@ -41,6 +45,10 @@ public class HrApplication implements CommandLineRunner {
 
 			System.out.format("1 nappal a %.2f éves határ előtt az új fizetés %d%n", limit, e1.getSalary());
 			System.out.format("1 nappal a %.2f éves határ után az új fizetés %d%n", limit, e2.getSalary());
+
+
+			initDbService.clearDB();
+			initDbService.insertTestData();
 		}
 
 	}
