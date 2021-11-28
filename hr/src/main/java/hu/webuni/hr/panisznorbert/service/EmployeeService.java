@@ -1,22 +1,34 @@
 package hu.webuni.hr.panisznorbert.service;
 
+import hu.webuni.hr.panisznorbert.dto.EmployeeDto;
 import hu.webuni.hr.panisznorbert.model.Employee;
+import org.springframework.web.bind.annotation.PathVariable;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
 public interface EmployeeService {
 	
-	public int getPayRaisePercent(Employee employee);
+	int getPayRaisePercent(Employee employee);
 
-	public Employee save(Employee employee);
+	Employee save(Employee employee);
 
-	public Employee update(Employee employee);
+	Employee update(Employee employee);
 
-	public List<Employee> findAll();
+	List<Employee> findAll();
 
-	public Optional<Employee> findById(long id);
+	Optional<Employee> findById(long id);
 
-	public void delete(long id);
+	void delete(long id);
+
+	List<Employee> findByPost(String post);
+
+	List<Employee> findByStartWithName(String name);
+
+	List<Employee> findByEntryBetween(LocalDateTime entry_min, LocalDateTime entry_max);
+
+	List<Employee> findBySalaryGreaterThan(Integer minSalary);
+
 	
 }
